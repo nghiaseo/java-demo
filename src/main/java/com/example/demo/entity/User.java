@@ -3,12 +3,14 @@ package com.example.demo.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user",schema = "public")
 public class User {
     private Integer id;
     private String username;
     private String password;
+    private Integer dep;
     @Id
+    @Column(name = "id",nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId(){
         return id;
@@ -30,9 +32,13 @@ public class User {
     public void setPassword(String password){
         this.password=password;
     }
-
-    @Override
-    public String toString() {
-        return "User - id:"+id+"username:"+username;
+    @Column(name = "dep")
+    public Integer getDep(){
+        return dep;
     }
+    public void setDep(Integer dep){
+        this.dep = dep;
+    }
+
+
 }
